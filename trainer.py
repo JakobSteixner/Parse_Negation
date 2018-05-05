@@ -101,15 +101,6 @@ def main(model=None, output_dir=None, n_iter=50):
 
         # test the saved model
         print("Loading from", output_dir)
-        TRAIN_DATA.append(('Kein Mensch wartet auf dich.', {
-        'entities': [(0, 4, 'NEGATION')]
-    }))
-        TRAIN_DATA.append((u'In Österreich gibt es keine Löwen, das ist aber nicht schlimm', {
-        'entities': []
-    }))
-        TRAIN_DATA.append((u'Das habe ich mit keinem Wort gesagt', {
-        'entities': []
-    }))
         nlp2 = spacy.load(output_dir)
         for text, _ in TRAIN_DATA:
             doc = nlp2(text)
@@ -120,6 +111,9 @@ def main(model=None, output_dir=None, n_iter=50):
 if __name__ == '__main__':
     plac.call(main) # (**{"output_dir":"trainedmodel","n_iter":30
     nlp2 = spacy.load("trainedmodel")
-    displacy.serve(nlp2("Ich kann dir nicht folgen"), style="ent")
-    displacy.serve(nlp2("Ich habe keine Lust auf Bier."), style="ent")
-    displacy.serve(nlp2("Ich esse nicht erst seit gestern kein Fleisch"), style="ent")
+    displacy.serve(nlp2(u'In Österreich gibt es keine Löwen, das ist aber nicht schlimm'), style="ent") #
+    displacy.serve(nlp2(u'Das habe ich mit keinem Wort gesagt'), style="ent") # no token of `keinem` in training set, tests generalisation across inflection patterns of lemma
+    displacy.serve(nlp2("Ich kann dir nicht folgen"), style="ent") # 
+    displacy.serve(nlp2("Ich habe keine Lust auf Bier."), style="ent") # this should be the easiest case, as it's almost identical to one of the training examples
+    displacy.serve(nlp2("Ich esse nicht erst seit gestern kein Fleisch"), style="ent") # test generalisation to uninflected `kein`
+    displacy.serve(nlp2("Kein Mensch wartet auf dich."), style="ent")
