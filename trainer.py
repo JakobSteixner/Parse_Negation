@@ -8,9 +8,20 @@ from spacy import displacy
 nlp = spacy.load("de")
 
 nlp.entity.add_label("NEGATION")
+nlp.entity.add_label("NEGID")
 
 
 TRAIN_DATA = [
+    
+    #('Ich sage das nicht nur, weil ich ihn nicht mag.', {
+    #    'entities': [(13, 18, "NEGATION"), (19, 22, 'NEGID'), (37, 42, "NEGATION")]
+    #}),
+    #('Er bestreitet, jemals dort gewesen zu sein', {
+    #    'entities': [(3, 13, 'NEGID')]
+    #}),
+    #('Ich zweifle, dass er heute noch anruft.', {
+    #    'entities': [(4, 11, 'NEGID')]
+    #}),
     ('Warum kommst du heute nicht?', {
         'entities': [(22, 27, 'NEGATION')]
     }),
@@ -45,8 +56,10 @@ TRAIN_DATA = [
 @plac.annotations(
     model=("Model name. Defaults to blank 'en' model.", "option", "m", str),
     output_dir=("Optional output directory", "option", "o", Path),
-    n_iter=("Number of training iterations", "option", "n", int))
-def main(model=None, output_dir=None, n_iter=50):
+    n_iter=("Number of training iterations", "option", "n", int),
+    threshold_success=("losses threshold to declare success", "option", "t", float),
+    successive_successes=("Number of successful runs before terminating", "option", "s", int))
+def main(model=None, output_dir=None, n_iter=50, threshold_success=None, successive_successes=3):
     """Load the model, set up the pipeline and train the entity recognizer."""
     if model is not None:
         nlp = spacy.load(model)  # load existing spaCy model
@@ -68,12 +81,23 @@ def main(model=None, output_dir=None, n_iter=50):
     for _, annotations in TRAIN_DATA:
         for ent in annotations.get('entities'):
             ner.add_label(ent[2])
+    
+    def continue_condition():
+        if threshold_success == None:
+            if runs < n_iter:
+                return 1
+            return 0
+        if successes < successive_successes:
+            return 1
+        return 0
 
     # get names of other pipes to disable them during training
     other_pipes = [pipe for pipe in nlp.pipe_names if pipe != 'ner']
     with nlp.disable_pipes(*other_pipes):  # only train NER
         optimizer = nlp.begin_training()
-        for itn in range(n_iter):
+        successes = 0
+        runs = 0
+        while continue_condition():
             random.shuffle(TRAIN_DATA)
             losses = {}
             for text, annotations in TRAIN_DATA:
@@ -84,6 +108,11 @@ def main(model=None, output_dir=None, n_iter=50):
                     sgd=optimizer,  # callable to update weights
                     losses=losses)
             print(losses)
+            if threshold_success != None and losses["ner"] < threshold_success:
+                successes += 1
+            else:
+                successes = 0
+            runs += 1
 
     # test the trained model
     for text, _ in TRAIN_DATA:
@@ -117,3 +146,5 @@ if __name__ == '__main__':
     displacy.serve(nlp2("Ich habe keine Lust auf Bier."), style="ent") # this should be the easiest case, as it's almost identical to one of the training examples
     displacy.serve(nlp2("Ich esse nicht erst seit gestern kein Fleisch"), style="ent") # test generalisation to uninflected `kein`
     displacy.serve(nlp2("Kein Mensch wartet auf dich."), style="ent")
+    displacy.serve(nlp2("Warum bestreitest du das immer noch?"), style="ent")
+    displacy.serve(nlp2("Warum glaubst du, dass er nur heute nicht kann?"), style = "ent")
