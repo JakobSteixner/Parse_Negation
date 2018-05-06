@@ -47,7 +47,7 @@ Some of my test examples are misparsed by the base model, e.g. "bezweifle" is pa
 works mostly but not 100% reliably.
 
 Verb Clusters
-___
+---
 The parser's decisions which elements in an (embedded) sentence to assign as children of the invinitive/participle and which as children of the auxiliary/modal verb
 seem fairly arbitrary.
 
