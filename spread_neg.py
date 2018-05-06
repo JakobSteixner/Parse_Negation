@@ -1,24 +1,11 @@
-import trainer, time
+import trainer, time, json
 
 t = trainer.Trainer(output_dir="trainedmodel"+time.strftime("%Y-%m-%d_%H-%M"), n_iter=100)
 nlp = t.nlp
 
 # test novel examples
-docs = [nlp(sentence) for sentence in [
-                "Ich glaube nicht, dass du eine Ahnung hast", # all negated - OK
-                "Ich bezweifle, dass du eine Ahnung hast", # misparse of "bezweifle" as ADJ means negation spreads wrongly to the subject
-                "Ich glaube, das ist nicht, was du mir sagen willst.", # only embedded clause negated - OK
-                "Ich weiß nicht, warum du mir das sagst", # all negated - OK
-                "Ich bezweifle deine Redlichkeit.", # same as above - misparse of bezweifle means the rule doesn't apply as it should
-                "Ich bestreite deine Redlichkeit.", # failure to generalise to "bestreite", no negation detected at all
-                "Er bezweifelt immer noch, dass das wahr sein kann", # "bezweifeln" and the embedded clause negated, SUBJ and "immer noch" not - OK
-                "China bestreitet die angeblichen Pläne, Taiwan zu sanktionieren.",
-                "Wladimir Putin bestreitet beim heutigen Gipfeltreffen erneut, dass Russland in Syrien Angriffe vertuscht.", # only "bestreiten" and embedded clause negated - OK
-                "Gestern stand in der Zeitung, dass es am Wochenende keinen Regen geben wird.", # stops short of spreading to the whole embedded clause because "keinen Regen" is parsed as a child of "geben" while the head of the EC is "wird"
-                "Die Regierung scheint keinen Plan zu haben, um die Probleme der Landwirtschaft zu lösen", # OK
-                "Die Regierung kündigte an, keine weiteren Zugeständnisse zu machen.", # EC only negated - OK
-                "Die Regierung versprach keine weiteren Zugeständnisse." # all negated - OK
-                ]]
+with open("TEST_EXAMPLES.json", "r") as inputfile:
+    docs = [nlp(sentence) for sentence in json.load(inputfile)]
 
 
 
@@ -37,7 +24,7 @@ for doc in docs:
                     if daughter.dep_ in ('oc', 'oa') or not (token.pos_ == "VERB" and token.ent_type_ == "NEGATION"):
                         daughter._.is_negated = True
             # spread to the head unless you're a verb, in which case you might either be a negative verb, or we've likely arrived at a clause boundary
-            if token._.is_negated and token.pos_ not in  ("VERB", "AUX"):
+            if token._.is_negated and token.pos_ not in  ("VERB", "AUX"): # undergenerates in verb clusters!
                 token.head._.is_negated = True
     print([(token, token._.is_negated) for token in doc])
 
@@ -61,6 +48,14 @@ for doc in docs:
     # pintpointing the problem: "bezweifle" is parsed as an adjective!
     print ([(token, token.pos_, token.ent_type_) for token in doc if token.head == token])
     
+t.save()
+
+negators = [[token.string for token in doc if token.ent_type_ == "NEGATION"] for token in doc]
+negated = [[token.string for token in doc if token._.is_negated == True] for token in doc]
+neg_and_scope = list(zip([doc.text for doc in docs], negators, negated))
+
+with open("negation_scope.json", "w") as outfile:
+    json.dump(neg_and_scope, outfile, indent=4, ensure_ascii = False)
 
 #[(glaube, 'VERB', '')]
 #[(bezweifle, 'ADJ', 'NEGATION')]
