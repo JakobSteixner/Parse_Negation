@@ -50,8 +50,8 @@ for doc in docs:
     
 t.save()
 
-negators = [[token.string for token in doc if token.ent_type_ == "NEGATION"] for token in doc]
-negated = [[token.string for token in doc if token._.is_negated == True] for token in doc]
+negators = [[token.string for token in doc if token.ent_type_ == "NEGATION"] for doc in docs]
+negated = [[token.string for token in doc if token._.is_negated == True] for doc in docs]
 neg_and_scope = list(zip([doc.text for doc in docs], negators, negated))
 
 with open("negation_scope.json", "w") as outfile:
