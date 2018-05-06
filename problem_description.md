@@ -10,13 +10,15 @@ Du musst das Erstlingswerk von keinem Linguisten gelesen haben. NOT(MUST(read))
 
 Ich muss bezweifeln, dass du "Syntactic Structures" gelesen hast. MUST(NOT(believe that...))
 
-Negation doesn't usually spread across Quantifiers and quantifying adverbs, but can spread across modal verbs:
+Negation doesn't usually spread across Quantifiers and quantifying adverbs:
 
 - Dieses Jahr hat in fast allen Fächern kein Schüler einen Fünfer gehabt. ALL(NO)
 - Dieses Jahr hat kein Schüler in fast allen Fächern einen Fünfer gehabt. NO(ALL)
 
 - Weil oft niemand gekommen ist, mussten wir zusperren. OFTEN(NOBODY)
 - Weil niemand oft gekommen ist, blieben sich die Gäste fremd. NOBODY(OFTEN)
+
+...but negation can spread across modal verbs:
 
 - Ich muss heute niemanden treffen. NOT(MUST(meet ANYbody)) or MUST(NOT(meet ANYbody))
 
