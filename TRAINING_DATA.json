@@ -1,0 +1,285 @@
+[
+    [
+        "Warum kommst du heute nicht?",
+        {
+            "entities": [
+                [
+                    22,
+                    27,
+                    "NEGATION"
+                ]
+            ]
+        }
+    ],
+    [
+        "Ich habe keine Lust auf Apfelmus.",
+        {
+            "entities": [
+                [
+                    9,
+                    14,
+                    "NEGATION"
+                ]
+            ]
+        }
+    ],
+    [
+        "Peter will lieber nicht heute kommen.",
+        {
+            "entities": [
+                [
+                    0,
+                    5,
+                    "PERS"
+                ],
+                [
+                    18,
+                    23,
+                    "NEGATION"
+                ]
+            ]
+        }
+    ],
+    [
+        "In China leben keine K\u00e4ngurus.",
+        {
+            "entities": [
+                [
+                    3,
+                    8,
+                    "GPE"
+                ],
+                [
+                    15,
+                    20,
+                    "NEGATION"
+                ]
+            ]
+        }
+    ],
+    [
+        "Ich bin mir keiner Schuld bewusst.",
+        {
+            "entities": [
+                [
+                    12,
+                    18,
+                    "NEGATION"
+                ]
+            ]
+        }
+    ],
+    [
+        "Ich habe keinen Käse mehr",
+        {
+            "entities": [
+                [
+                    9,
+                    15,
+                    "NEGATION"
+                ]
+            ]
+        }
+    ],
+    [
+        "Schild habe ich keines gesehen.",
+        {
+            "entities": [
+                [
+                    16,
+                    22,
+                    "NEGATION"
+                ]
+            ]
+        }
+    ],
+    [
+        "Donald Trump bezweifelt, dass Nordkorea zur Abr\u00fcstung bereit ist.",
+        {
+            "entities": [
+                [
+                    0,
+                    12,
+                    "PERS"
+                    
+                ],
+                [
+                    13,
+                    23,
+                    "NEGATION"
+                ],
+                [
+                    30,
+                    39,
+                    "GPE"
+                    
+                ]
+            ]
+        }
+    ],
+    [
+        "Es bleibt zu bezweifeln, dass die Friedensverhandlungen zu einer L\u00f6sung f\u00fchren werden.",
+        {
+            "entities": [
+                [
+                    13,
+                    23,
+                    "NEGATION"
+                ]
+            ]
+        }
+    ],
+    [
+        "Ich bezweifle, dass du mir das sagen kannst.",
+        {
+            "entities": [
+                [
+                    4,
+                    13,
+                    "NEGATION"
+                ]
+            ]
+        }
+    ],
+    [
+        "Immer noch bestreitet er, dass er etwas falsch gemacht hat.",
+        {
+            "entities": [
+                [
+                    11,
+                    21,
+                    "NEGATION"
+                ]
+            ]
+        }
+    ],
+    [
+        "Die Minister in Peking bestreiten, dass sie den Energiemarkt bewusst manipulieren.",
+        {
+            "entities": [
+                [
+                    16,
+                    22,
+                    "GPE"
+                ],
+                [
+                    23,
+                    33,
+                    "NEGATION"
+                ]
+            ]
+        }
+    ],
+    [
+        "Ich bestreite, dass das allein meine Schuld ist.",
+        {
+            "entities": [
+                [
+                    4,
+                    13,
+                    "NEGATION"
+                ]
+            ]
+        }
+    ],
+    [
+        "Niemand wird dir das glauben.",
+        {
+            "entities": [
+                [
+                    0,
+                    7,
+                    "NEGATION"
+                ]
+            ]
+        }
+    ],
+    [
+        "Google bezweifelt, dass Apples Siri konkurrenzfähig ist.",
+        {
+            "entities": [
+                [
+                    0,
+                    6,
+                    "ORG"
+                ],
+                [
+                    7,
+                    17,
+                    "NEGATION"
+                ],
+                [
+                    24,
+                    30,
+                    "ORG"
+                ],
+                [
+                    31,
+                    35,
+                    "PROD"
+                ]
+            ]
+        }
+    ],
+    [
+        "Da bin ich ja nochmal g\u00fcnstig davongekommen",
+        {
+            "entities": []
+        }
+    ],
+    [
+        "Ich schaffe es doch erst morgen.",
+        {
+            "entities": []
+        }
+    ],
+    [
+        "Ich hab noch immer keine neue Wohnung.",
+        {
+            "entities": [
+                [
+                    19,
+                    24,
+                    "NEGATION"
+                ]
+            ]
+        }
+    ],
+    [
+        "Ich bestreite, dass du eine neue Wohnung brauchst.",
+        {
+            "entities": [
+                [
+                    4,
+                    13,
+                    "NEGATION"
+                ]
+            ]
+        }
+    ],
+    [
+        "Bezweifelst du etwa, dass ich kaum noch Platz habe?",
+        {
+            "entities": [
+                [
+                    0,
+                    11,
+                    "NEGATION"
+                ]
+            ]
+        }
+    ],
+    [
+        "Du kannst doch nicht umziehen, nur weil du nicht entr\u00fcmpeln willst!",
+        {
+            "entities": [
+                [
+                    15,
+                    20,
+                    "NEGATION"
+                ]
+            ]
+        }
+    ]
+]
+
