@@ -1,4 +1,4 @@
-import trainer, time, json
+import trainer, time, json, display_scope
 
 t = trainer.Trainer(output_dir="trainedmodel"+time.strftime("%Y-%m-%d_%H-%M"), n_iter=100)
 nlp = t.nlp
@@ -27,6 +27,10 @@ for doc in docs:
             if token._.is_negated and token.pos_ not in  ("VERB", "AUX"): # undergenerates in verb clusters!
                 token.head._.is_negated = True
     print([(token, token._.is_negated) for token in doc])
+
+for doc in docs:
+    display_scope.Display(doc, "is_negated", "_NG")
+
 
 #Output
 #=====
