@@ -19,13 +19,13 @@ def getindices(sentence, searchterm):
             return (sentence.index(word), sentence.index(word) + len(word.strip(string.punctuation)))
 
 
-sentences = "Ich finde meine Geldbörse nirgends.", "Ich habe keine Lust auf Bier.", "Ich habe niemandem etwas angetan.", "Ich bin mir keiner Schuld bewusst.", "Ich glaube nicht, dass du das niemandem gesagt hast."
+#sentences = "Ich finde meine Geldbörse nirgends.", "Ich habe keine Lust auf Bier.", "Ich habe niemandem etwas angetan.", "Ich bin mir keiner Schuld bewusst.", "Ich glaube nicht, dass du das niemandem gesagt hast."
 
 def define_neg_ner(sentence):
     return [(getindices(sentence, word) + ("NEGATION",)) for word in negitems if getindices(sentence,word)]
-    for word in negitems:
-            if getindices(sentence, word):
-                return (getindices(sentence, word) + ("NEGATION",))
+    #for word in negitems:
+    #        if getindices(sentence, word):
+    #            return (getindices(sentence, word) + ("NEGATION",))
 
 if __name__ == '__main__':
     if len(sys.argv) > 3:
@@ -34,6 +34,7 @@ if __name__ == '__main__':
         mode = "a"
     with open(sys.argv[1]) as inputfile:
         raw_sentences = inputfile.read().split("\n")
+    
     print (raw_sentences)
     annotated_sentences = [define_neg_ner(sentence) for sentence in raw_sentences]
     print (annotated_sentences)
@@ -44,6 +45,9 @@ if __name__ == '__main__':
                 )
         )
     output = [[sub[0], {sub[1][0]:sub[1][1]}] for sub in output]
+    if mode in ("a", "append"):
+        with open(sys.argv[2]) as old:
+            output = json.load(old) + output
     with open(sys.argv[2], mode) as outfile:
         json.dump(output, outfile, indent=4)
     

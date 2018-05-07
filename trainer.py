@@ -7,15 +7,12 @@ from pathlib import Path
 from spacy import displacy
 nlp = spacy.load("de")
 
-nlp.entity.add_label("NEGATION")
-nlp.entity.add_label("NEGID")
+nlp.entity.add_label("NEGATION") # negative elements
+nlp.entity.add_label("__NEG") # elements in the scope of negation
 
 
 TRAIN_DATA = json.load(open("TRAINING_DATA.json"))
-print (TRAIN_DATA)
-for entry in TRAIN_DATA:
-    print (entry)
-    print (len(entry))
+
 
 @plac.annotations(
     model=("Model name. Defaults to blank 'en' model.", "option", "m", str),
@@ -30,8 +27,7 @@ class Trainer:
     def __init__(self, model=None, output_dir=None, n_iter=50, threshold_success=None, successive_successes=3, input_data = "TRAINING_DATA.json", param='ner'):
         """Load the model, set up the pipeline and train the entity recognizer."""
         if model is not None:
-            self.nlp = nlp = spacy.l
-            oad(model)  # load existing spaCy model
+            self.nlp = nlp = spacy.load(model)  # load existing spaCy model
             print("Loaded model '%s'" % model)
         else:
             self.nlp = nlp = spacy.load('de', parser=False)  # load default `de` model
@@ -43,6 +39,7 @@ class Trainer:
         self.TRAIN_DATA = json.load(open(input_data))
     
         self.train(param)
+        self.test()
     def train(self, param):
         # create the built-in pipeline components and add them to the pipeline
         # nlp.create_pipe works for built-ins that are registered with spaCy
@@ -54,7 +51,6 @@ class Trainer:
             ner = self.nlp.get_pipe(param)
     
         # add labels
-        print (self.TRAIN_DATA)
         for _, annotations in self.TRAIN_DATA:
             for ent in annotations.get('entities'):
                 ner.add_label(ent[2])
@@ -105,15 +101,15 @@ class Trainer:
             self.nlp.to_disk(output_dir)
             print("Saved model to", output_dir)
 
-
-if __name__ == '__main__':
-    t = plac.call(Trainer) # (**{"output_dir":"trainedmodel","n_iter":30
-    nlp2 = spacy.load(t)
-    displacy.serve(nlp2(u'In Österreich gibt es keine Löwen, das ist aber nicht schlimm'), style="ent") #
-    displacy.serve(nlp2(u'Das habe ich mit keinem Wort gesagt'), style="ent") # no token of `keinem` in training set, tests generalisation across inflection patterns of lemma
-    displacy.serve(nlp2("Ich kann dir nicht folgen"), style="ent") # 
-    displacy.serve(nlp2("Ich habe keine Lust auf Bier."), style="ent") # this should be the easiest case, as it's almost identical to one of the training examples
-    displacy.serve(nlp2("Ich esse nicht erst seit gestern kein Fleisch"), style="ent") # test generalisation to uninflected `kein`
-    displacy.serve(nlp2("Kein Mensch wartet auf dich."), style="ent")
-    displacy.serve(nlp2("Warum bestreitest du das immer noch?"), style="ent")
-    displacy.serve(nlp2("Warum glaubst du, dass er nur heute nicht kann?"), style = "ent")
+#
+#if __name__ == '__main__':
+#    t = plac.call(Trainer) # (**{"output_dir":"trainedmodel","n_iter":30
+#    nlp2 = spacy.load(t)
+#    displacy.serve(nlp2(u'In Österreich gibt es keine Löwen, das ist aber nicht schlimm'), style="ent") #
+#    displacy.serve(nlp2(u'Das habe ich mit keinem Wort gesagt'), style="ent") # no token of `keinem` in training set, tests generalisation across inflection patterns of lemma
+#    displacy.serve(nlp2("Ich kann dir nicht folgen"), style="ent") # 
+#    displacy.serve(nlp2("Ich habe keine Lust auf Bier."), style="ent") # this should be the easiest case, as it's almost identical to one of the training examples
+#    displacy.serve(nlp2("Ich esse nicht erst seit gestern kein Fleisch"), style="ent") # test generalisation to uninflected `kein`
+#    displacy.serve(nlp2("Kein Mensch wartet auf dich."), style="ent")
+#    displacy.serve(nlp2("Warum bestreitest du das immer noch?"), style="ent")
+#    displacy.serve(nlp2("Warum glaubst du, dass er nur heute nicht kann?"), style = "ent")
