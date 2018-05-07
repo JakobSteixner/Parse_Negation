@@ -16,6 +16,7 @@ as an adjective and thus the stop condition isn't applied).
 * display_scope.py -- displacy-interface that displays the recognised entities after appending a string to
 any entity that is in the scope of a negation (or has any other user-defined feature). A recognised entity
 "Google" will thus be displayed as, e.g. "Google ORG_NG" instead of "Google ORG" to indicate it's negated.
+Sample output demonstrating this is available under \*negated.html.
 
 Usage
 ---
