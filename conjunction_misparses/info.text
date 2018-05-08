@@ -1,0 +1,5 @@
+The examples in this folder illustrate how the out-of-the-box German model,
+trained on news data, mishandles clausal conjunction with ellipsis of 
+repeating arguments. Since my model builds upon this and only trains entity 
+recognition on top of it, all parses are identical between the out-of-the-box
+model and mine. 
