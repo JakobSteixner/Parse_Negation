@@ -16,7 +16,7 @@ def model_timestamp(timespec=timeformat):
 
 def model_name(directory=models_dir_path, basename=trainedmodel_base, timespec=timeformat, include_timestamp=True):
     timestring = model_timestamp(timespec)
-    return os.sep.join(directory + [trainedmodel_base]) + include_timestamp * timestring
+    return os.sep.join(directory + [basename]) + include_timestamp * timestring
 
 
 
