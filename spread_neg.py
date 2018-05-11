@@ -124,4 +124,4 @@ def __main__(output_basename="scope_output",
 
 
 if __name__ == '__main__':
-    __main__()
+    plac.call(__main__)
