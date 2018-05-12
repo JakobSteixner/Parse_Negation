@@ -1,0 +1,272 @@
+[
+    [
+        "Ich glaube nicht, dass du eine Ahnung hast",
+        [
+            "nicht"
+        ],
+        [
+            "Ich ",
+            "glaube ",
+            "nicht",
+            ", ",
+            "dass ",
+            "du ",
+            "eine ",
+            "Ahnung ",
+            "hast"
+        ]
+    ],
+    [
+        "Ich bezweifle, dass du eine Ahnung hast",
+        [
+            "bezweifle"
+        ],
+        [
+            "Ich ",
+            "bezweifle",
+            ", ",
+            "dass ",
+            "du ",
+            "eine ",
+            "Ahnung ",
+            "hast"
+        ]
+    ],
+    [
+        "Ich glaube, das ist nicht, was du mir sagen willst.",
+        [
+            "glaube",
+            "nicht"
+        ],
+        [
+            "glaube",
+            "das ",
+            "ist ",
+            "nicht",
+            ", ",
+            "was ",
+            "du ",
+            "mir ",
+            "sagen ",
+            "willst"
+        ]
+    ],
+    [
+        "Ich weiß nicht, warum du mir das sagst",
+        [
+            "nicht"
+        ],
+        [
+            "Ich ",
+            "weiß ",
+            "nicht",
+            ", ",
+            "warum ",
+            "du ",
+            "mir ",
+            "das ",
+            "sagst"
+        ]
+    ],
+    [
+        "Ich bezweifle deine Redlichkeit.",
+        [
+            "bezweifle "
+        ],
+        [
+            "Ich ",
+            "bezweifle ",
+            "deine ",
+            "Redlichkeit",
+            "."
+        ]
+    ],
+    [
+        "Ich bestreite deine Redlichkeit.",
+        [
+            "bestreite "
+        ],
+        [
+            "bestreite ",
+            "deine ",
+            "Redlichkeit"
+        ]
+    ],
+    [
+        "Er bezweifelt immer noch, dass das wahr sein kann",
+        [
+            "noch"
+        ],
+        [
+            "Er ",
+            "bezweifelt ",
+            "immer ",
+            "noch",
+            ", ",
+            "dass ",
+            "das ",
+            "wahr ",
+            "sein ",
+            "kann"
+        ]
+    ],
+    [
+        "China bestreitet die angeblichen Pläne, Taiwan zu sanktionieren.",
+        [
+            "bestreitet "
+        ],
+        [
+            "bestreitet ",
+            "die ",
+            "angeblichen ",
+            "Pläne",
+            ", ",
+            "Taiwan ",
+            "zu ",
+            "sanktionieren"
+        ]
+    ],
+    [
+        "Wladimir Putin bestreitet beim heutigen Gipfeltreffen erneut, dass Russland in Syrien Angriffe vertuscht.",
+        [
+            "bestreitet "
+        ],
+        [
+            "bestreitet ",
+            "dass ",
+            "Russland ",
+            "in ",
+            "Syrien ",
+            "Angriffe ",
+            "vertuscht"
+        ]
+    ],
+    [
+        "Gestern stand in der Zeitung, dass es am Wochenende keinen Regen geben wird.",
+        [
+            "Gestern ",
+            "keinen "
+        ],
+        [
+            "Gestern ",
+            "stand ",
+            "in ",
+            "der ",
+            "Zeitung",
+            ", ",
+            "dass ",
+            "es ",
+            "am ",
+            "Wochenende ",
+            "keinen ",
+            "Regen ",
+            "geben ",
+            "wird",
+            "."
+        ]
+    ],
+    [
+        "Die Regierung scheint keinen Plan zu haben, um die Probleme der Landwirtschaft zu lösen",
+        [
+            "keinen "
+        ],
+        [
+            "keinen ",
+            "Plan ",
+            "zu ",
+            "haben",
+            ", ",
+            "um ",
+            "die ",
+            "Probleme ",
+            "der ",
+            "Landwirtschaft ",
+            "zu ",
+            "lösen"
+        ]
+    ],
+    [
+        "Die Regierung kündigte an, keine weiteren Zugeständnisse zu machen.",
+        [
+            "keine "
+        ],
+        [
+            "keine ",
+            "weiteren ",
+            "Zugeständnisse ",
+            "zu ",
+            "machen"
+        ]
+    ],
+    [
+        "Die Regierung versprach keine weiteren Zugeständnisse.",
+        [
+            "keine "
+        ],
+        [
+            "Die ",
+            "Regierung ",
+            "versprach ",
+            "keine ",
+            "weiteren ",
+            "Zugeständnisse",
+            "."
+        ]
+    ],
+    [
+        "Google bezweifelt, dass Apple seinen Copyright-Anspruch auf Tablets halten kann.",
+        [
+            "bezweifelt",
+            "seinen "
+        ],
+        [
+            "bezweifelt",
+            "dass ",
+            "Apple ",
+            "seinen ",
+            "Copyright-Anspruch ",
+            "auf ",
+            "Tablets ",
+            "halten ",
+            "kann"
+        ]
+    ],
+    [
+        "Ich war noch nicht in Moskau.",
+        [
+            "nicht "
+        ],
+        [
+            "Ich ",
+            "war ",
+            "noch ",
+            "nicht ",
+            "in ",
+            "Moskau",
+            "."
+        ]
+    ],
+    [
+        "Google ist nicht der erste auf diesem Markt - Apple war ihnen Jahre voraus.",
+        [
+            "nicht "
+        ],
+        [
+            "Google ",
+            "ist ",
+            "nicht ",
+            "der ",
+            "erste ",
+            "auf ",
+            "diesem ",
+            "Markt ",
+            "- ",
+            "Apple ",
+            "war ",
+            "ihnen ",
+            "Jahre ",
+            "voraus",
+            "."
+        ]
+    ]
+]

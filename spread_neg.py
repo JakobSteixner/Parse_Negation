@@ -24,7 +24,7 @@ class OpScope():
         self.example_input = example_input
         self.docs, self.scoped = [], []
         if train_new:
-            train = trainer.Trainer(
+            self.train =  train = trainer.Trainer(
                 output_dir="trainedmodel"+time.strftime("%Y-%m-%d_%H-%M"),
                 n_iter=100)
             self.nlp = train.nlp
@@ -120,6 +120,8 @@ def __main__(output_basename="scope_output",
     ops.load_examples(ops.example_input)
     ops.assign_scope_all(interactive=interactive)
     ops.save(output_basename)
+    if train_new:
+        ops.train.save()
 
 
 
