@@ -280,7 +280,10 @@
                 ]
             ]
         }
-    ],
+    ]
+]
+
+[
     [
         "Warum kommst du heute nicht?",
         {
@@ -613,6 +616,12 @@
                     "NEGATION"
                 ]
             ]
+        }
+    ],
+    [
+        "",
+        {
+            "entities": []
         }
     ]
 ]
